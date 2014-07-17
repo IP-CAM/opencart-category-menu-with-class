@@ -1,0 +1,40 @@
+<modification>
+	<id><![CDATA[@tik Category menu with class]]></id>
+	<version><![CDATA[1.1]]></version>
+	<vqmver><![CDATA[2.1.7]]></vqmver>
+	<author><![CDATA[OC2PS]]></author>
+	<file name="catalog/view/theme/default/template/module/category.tpl">
+		<operation>
+			<search position="before" offset="1" index="1" error="log"><![CDATA[<?php if ($category['category_id'] == $category_id) { ?>]]></search>
+			<add><![CDATA[TheMarkerToRemoveFirstLI]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="1" error="log"><![CDATA[TheMarkerToRemoveFirstLI]]></search>
+			<add><![CDATA[]]></add>
+		</operation>
+		<operation>
+			<search position="before" index="1" error="log"><![CDATA[<a href="<?php echo $category['href']; ?>" class="active">]]></search>
+			<add><![CDATA[<li class="category-menu category-id-<?php echo $category['category_id']; ?> current">]]></add>
+		</operation>
+		<operation>
+			<search position="before" index="1" error="log"><![CDATA[<a href="<?php echo $category['href']; ?>">]]></search>
+			<add><![CDATA[<li class="category-menu category-id-<?php echo $category['category_id']; ?>">]]></add>
+		</operation>
+		<operation>
+			<search position="before" offset="1" index="1" error="log"><![CDATA[<?php if ($child['category_id'] == $child_id) { ?>]]></search>
+			<add><![CDATA[TheMarkerToRemoveChildLI]]></add>
+		</operation>
+		<operation>
+			<search position="replace" offset="1" error="log"><![CDATA[TheMarkerToRemoveChildLI]]></search>
+			<add><![CDATA[]]></add>
+		</operation>
+		<operation>
+			<search position="before" index="1"><![CDATA[<a href="<?php echo $child['href']; ?>" class="active">]]></search>
+			<add><![CDATA[<li class="category-menu category-id-<?php echo $child['category_id']; ?> subcategory current">]]></add>
+		</operation>
+		<operation>
+			<search position="before" index="1"><![CDATA[<a href="<?php echo $child['href']; ?>">]]></search>
+			<add><![CDATA[<li class="category-menu category-id-<?php echo $child['category_id']; ?> subcategory">]]></add>
+		</operation>
+	</file>
+</modification>
